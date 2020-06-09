@@ -2219,12 +2219,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-area {
-  background-color: #f9f9ff;
+  background-color: #f2f2ff;
+}
+
+.qualification-area{
+  background-color: #f2f2ff;
 }
 
 .myself-wrap {
-  background-color: #fff;
+  background-color: #f8f8ff;
   display: inline-block;
+  border-radius: 15px;
 }
 
 .myself-wrap .desc {
@@ -2243,7 +2248,7 @@ h1, h2, h3, h4, h5, h6 {
 .myself-wrap .desc .talk-btn {
   border: 1px solid transparent;
   color: #fff;
-  padding: 12px 70px;
+  padding: 12px 80px;
   display: inline-block;
   border-radius: 25px;
   font-weight: 400;
@@ -2332,7 +2337,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-area {
-  background-color: #f9f9ff;
+  /* background-color: #f9f9ff; */
+}
+
+.footer-area{
+  background-color: #f2f2ff;
 }
 
 .single-project a {

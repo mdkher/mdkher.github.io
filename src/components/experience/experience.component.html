@@ -1,0 +1,86 @@
+<section id="about" class="px-6 max-w-[1400px] mx-auto w-full mb-40 scroll-mt-24">
+
+    <div class="flex items-end justify-between mb-20">
+        <h2 class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white font-display">Experience <span
+                class="text-slate-500 dark:text-slate-600 text-2xl align-super ml-2">{{ jobs().length }}</span></h2>
+    </div>
+
+    <div class="space-y-px">
+        @for (job of jobs(); track job.id; let i = $index) {
+        <!-- Accordion Item -->
+        <div class="group border-t border-slate-200 dark:border-white/10 transition-colors duration-300"
+            [class.border-black]="isExpanded(job.id)" [class.dark:border-white]="isExpanded(job.id)"
+            [class.border-slate-200]="!isExpanded(job.id)">
+
+            <!-- Header / Trigger -->
+            <button type="button" (click)="toggle(job.id)" [attr.aria-expanded]="isExpanded(job.id)"
+                [attr.aria-controls]="'job-details-' + job.id"
+                class="w-full py-8 md:py-10 flex flex-col md:flex-row md:items-center justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50 dark:focus-visible:ring-white/50 rounded-lg px-2 -mx-2 transition-colors cursor-pointer bg-transparent hover:bg-slate-100 dark:hover:bg-white/5">
+
+                <div class="flex items-baseline gap-6 md:w-1/2">
+                    <span
+                        class="font-mono text-sm text-slate-600 dark:text-slate-600 group-hover:text-black dark:group-hover:text-white transition-colors">0{{
+                        i + 1 }}</span>
+                    <h3 class="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-800 dark:text-slate-300 font-display group-hover:text-black dark:group-hover:text-white transition-colors"
+                        [class.text-black]="isExpanded(job.id)" [class.dark:text-white]="isExpanded(job.id)">
+                        {{ job.role }}
+                    </h3>
+                </div>
+
+                <div class="flex items-center gap-4 md:gap-12 md:w-1/2 md:justify-end">
+                    <div
+                        class="hidden md:block text-slate-600 dark:text-slate-500 font-medium group-hover:text-black dark:group-hover:text-white transition-colors uppercase tracking-widest text-sm font-display">
+                        {{ job.company }}
+                    </div>
+
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="text-slate-700 dark:text-slate-600 font-mono text-sm group-hover:text-black dark:group-hover:text-white transition-colors whitespace-nowrap">
+                            {{ job.period }}
+                        </div>
+                        <!-- Chevron Indicator -->
+                        <div class="w-10 h-10 rounded-full border border-slate-300 dark:border-white/10 flex items-center justify-center text-slate-900 dark:text-white transition-all duration-300"
+                            [class.rotate-180]="isExpanded(job.id)" [class.bg-black]="isExpanded(job.id)"
+                            [class.dark:bg-white]="isExpanded(job.id)" [class.text-white]="isExpanded(job.id)"
+                            [class.dark:text-black]="isExpanded(job.id)"
+                            [class.border-transparent]="isExpanded(job.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </button>
+
+            <!-- Expanded Details (Accordion Body) -->
+            <div [id]="'job-details-' + job.id" role="region"
+                class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.87,0,0.13,1)]"
+                [class.grid-rows-[1fr]]="isExpanded(job.id)">
+                <div class="overflow-hidden">
+                    <div class="pb-12 pt-2 pl-2 md:pl-[calc(3rem+1.5rem)] max-w-4xl opacity-0 translate-y-4 transition-all duration-500 delay-100"
+                        [class.opacity-100]="isExpanded(job.id)" [class.translate-y-0]="isExpanded(job.id)">
+
+                        <div class="md:hidden text-slate-600 uppercase tracking-widest text-xs mb-6 font-medium">{{
+                            job.company }} • {{ job.location }}</div>
+
+                        <ul class="space-y-4">
+                            @for (item of job.highlights; track item) {
+                            <li
+                                class="flex items-start gap-4 text-slate-700 dark:text-slate-300 text-base md:text-lg leading-relaxed font-light">
+                                <span
+                                    class="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-white/40 shrink-0"></span>
+                                {{ item }}
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        <div class="border-t border-slate-200 dark:border-white/10"></div>
+    </div>
+
+</section>

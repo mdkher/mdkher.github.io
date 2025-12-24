@@ -1,0 +1,17 @@
+
+<div class="min-h-screen flex flex-col relative transition-colors duration-500">
+  
+  <!-- Animated Background -->
+  <app-background />
+
+  <!-- Grain Overlay -->
+  <div class="bg-grain"></div>
+
+  <app-navbar class="relative z-50" />
+  
+  <main class="flex-grow relative z-10 pt-32">
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-footer class="relative z-10" />
+</div>

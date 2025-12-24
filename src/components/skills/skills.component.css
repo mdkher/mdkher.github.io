@@ -1,0 +1,15 @@
+    .stroke-text {
+      /* Slate 500 for good contrast in Light Mode */
+      -webkit-text-stroke: 1.5px #64748b;
+      color: transparent;
+    }
+    
+    :host-context(.dark) .stroke-text {
+      /* Slate 600 for subtle look in Dark Mode */
+      -webkit-text-stroke: 1.5px #475569;
+    }
+    
+    /* Media query fallback */
+    @media (prefers-color-scheme: dark) {
+      .stroke-text { -webkit-text-stroke: 1.5px #475569; }
+    }

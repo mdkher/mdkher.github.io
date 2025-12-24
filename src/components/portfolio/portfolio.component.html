@@ -1,0 +1,57 @@
+<section id="work" class="px-6 max-w-[1400px] mx-auto w-full mb-40 scroll-mt-24">
+
+    <div class="flex items-end justify-between mb-20">
+        <h2 class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white font-display">Selected Work <span
+                class="text-slate-500 dark:text-slate-600 text-2xl align-super ml-2">{{ projects().length }}</span></h2>
+    </div>
+
+    <div class="relative group/list">
+        <!-- Floating Image Preview (Desktop) -->
+        <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none z-0 hidden lg:block opacity-0 transition-opacity duration-500 ease-out"
+            [class.opacity-100]="activeProject()">
+            @if (activeProject()) {
+            <img [src]="activeProject()?.image"
+                class="w-full h-full object-cover rounded-2xl shadow-2xl brightness-90 dark:brightness-75"
+                alt="Preview">
+            }
+        </div>
+
+        <!-- Project List -->
+        <div class="relative z-10 space-y-2">
+            @for (project of projects(); track project.id; let i = $index) {
+            <a [routerLink]="['/case-study', project.id]" (mouseenter)="setActive(project)" (mouseleave)="clearActive()"
+                class="block py-10 border-t border-slate-200 dark:border-white/10 hover:border-slate-900 dark:hover:border-white transition-colors group cursor-pointer">
+
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-baseline gap-6 md:w-1/2">
+                        <span
+                            class="font-mono text-sm text-slate-600 dark:text-slate-600 group-hover:text-black dark:group-hover:text-white transition-colors">0{{
+                            i + 1 }}</span>
+                        <h3
+                            class="text-3xl md:text-5xl font-bold text-slate-800 dark:text-slate-300 font-display group-hover:text-black dark:group-hover:text-white group-hover:translate-x-4 transition-all duration-300 ease-out">
+                            {{ project.title }}
+                        </h3>
+                    </div>
+
+                    <div class="flex items-center gap-12 md:w-1/2 md:justify-end">
+                        <div
+                            class="hidden md:block text-slate-600 dark:text-slate-500 font-medium group-hover:text-black dark:group-hover:text-white transition-colors uppercase tracking-widest text-sm">
+                            {{ project.category }}
+                        </div>
+                        <div
+                            class="hidden md:block text-slate-600 dark:text-slate-600 font-mono text-sm group-hover:text-black dark:group-hover:text-white transition-colors">
+                            {{ project.year }}
+                        </div>
+                        <div class="md:hidden w-full h-48 rounded-xl overflow-hidden mt-4">
+                            <img [ngSrc]="project.image" width="600" height="400" class="w-full h-full object-cover"
+                                [alt]="project.title">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            }
+            <div class="border-t border-slate-200 dark:border-white/10"></div>
+        </div>
+    </div>
+
+</section>

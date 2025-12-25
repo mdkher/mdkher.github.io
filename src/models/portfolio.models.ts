@@ -44,11 +44,13 @@ export interface Project {
   // Deep Dive Article Content
   problemStatement: string;
   contextText: string[];
+  overviewImages?: { title: string; desc: string; image: string }[];
 
   // Research
   researchFindings?: { icon: string; title: string; desc: string }[];
   researchGraph?: ChartData[];
   researchText?: string[];
+  researchImages?: { title: string; desc: string; image: string }[];
 
   process: ProcessStep[];
 

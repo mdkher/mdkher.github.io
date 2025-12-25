@@ -32,9 +32,9 @@ export const SKILLS_DATA: string[] = [
 ];
 
 export const CLIENTS_DATA: string[] = [
-  "Samsung",
-  "Airtable",
-  "Facebook",
+  "Accenture",
+  "EY",
+  "Dropbox",
   "Globant",
   "Infosys",
 ];
@@ -154,11 +154,15 @@ export const PROJECTS_DATA: Project[] = [
       "As a Product Designer, I led the initiative to build and enhance a scalable design system that streamlined workflows, improved UI consistency, and empowered designers and developers to work efficiently.",
     tags: ["Figma", "Tokens", "Accessibility", "Documentation"],
     client: "Globant",
-    role: "Lead Product Designer",
-    team: ["2 UI Designers", "4 Frontend Devs", "1 QA Specialist"],
+    role: "Experience Designer",
+    team: [
+      "A group of 13 highly skilled people",
+      "4 Frontend Devs",
+      "1 QA Specialist",
+    ],
     year: "2023",
-    timeline: "6 Months",
-    tools: ["Figma", "Storybook", "Angular", "Tailwind", "GitHub"],
+    timeline: "2.5 Years",
+    tools: ["Figma", "Storybook", "Angular", "React", "GitHub"],
     problemStatement:
       "Before the design system, the product faced inconsistent UI patterns across different features, time-consuming handoffs between designers and developers, a lack of accessibility standards, and no unified documentation.",
     contextText: [

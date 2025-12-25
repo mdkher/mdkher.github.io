@@ -5,6 +5,7 @@ import { HeroComponent } from '../hero/hero.component';
 import { PortfolioComponent } from '../portfolio/portfolio.component';
 import { ExperienceComponent } from '../experience/experience.component';
 import { SkillsComponent } from '../skills/skills.component';
+import { ProcessComponent } from '../process/process.component';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ import { SkillsComponent } from '../skills/skills.component';
     HeroComponent,
     PortfolioComponent,
     ExperienceComponent,
-    SkillsComponent
+    SkillsComponent,
+    ProcessComponent
   ],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush

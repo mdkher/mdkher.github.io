@@ -116,11 +116,11 @@ export class CaseStudyComponent implements AfterViewInit, OnDestroy {
 
   // Helper to get chart color
   get chartColor() {
-    return this.themeService.isDark() ? '#E2E2E2' : '#334155'; // Slate-700 for light mode
+    return '#00FF41'; // Electric Neon
   }
 
   get chartBg() {
-    return this.themeService.isDark() ? '#333' : '#e2e8f0';
+    return '#111';
   }
 
   renderResearchChart(project: Project) {
@@ -210,14 +210,14 @@ export class CaseStudyComponent implements AfterViewInit, OnDestroy {
       .range([height - margin.bottom, margin.top]);
 
     const line = d3.line<any>()
-      .x(d => x(d.label)!)
-      .y(d => y(d.value))
+      .x((d: any) => x(d.label)!)
+      .y((d: any) => y(d.value))
       .curve(d3.curveMonotoneX);
 
     const area = d3.area<any>()
-      .x(d => x(d.label)!)
+      .x((d: any) => x(d.label)!)
       .y0(height - margin.bottom)
-      .y1(d => y(d.value))
+      .y1((d: any) => y(d.value))
       .curve(d3.curveMonotoneX);
 
     // Gradient
@@ -270,7 +270,7 @@ export class CaseStudyComponent implements AfterViewInit, OnDestroy {
       .attr('stroke', this.chartColor)
       .attr('stroke-width', 2)
       .transition()
-      .delay((d, i) => i * 100)
+      .delay((d: any, i: number) => i * 100)
       .attr('r', 5);
 
     // X Axis

@@ -16,7 +16,7 @@
               "base": "./dist",
               "browser": "."
             },
-            "browser": "index.tsx",
+            "browser": "src/main.ts",
             "tsConfig": "tsconfig.json",
             "assets": [
               {
@@ -24,7 +24,11 @@
                 "input": "public",
                 "output": "/"
               }
-            ]
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {

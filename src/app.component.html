@@ -1,17 +1,15 @@
-
-<div class="min-h-screen flex flex-col relative transition-colors duration-500">
-  
-  <!-- Animated Background -->
-  <app-background />
-
-  <!-- Grain Overlay -->
-  <div class="bg-grain"></div>
-
-  <app-navbar class="relative z-50" />
-  
-  <main class="flex-grow relative z-10 pt-32">
-    <router-outlet></router-outlet>
-  </main>
-
-  <app-footer class="relative z-10" />
+<div #curtain
+  class="fixed inset-0 bg-ink-light z-[200] translate-y-full pointer-events-none border-b border-electric-neon/50">
 </div>
+
+<div class="debug-grid hidden">
+  <!-- 12 col grid overlay for dev -->
+  <div *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12]"></div>
+</div>
+
+<main>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</main>
+
+<app-custom-cursor />

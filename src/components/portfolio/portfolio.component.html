@@ -1,38 +1,55 @@
-<section id="work" class="w-full relative py-20 px-4 md:px-12 grid grid-cols-12 gap-y-0 text-white">
+<section
+  id="work"
+  class="w-full relative py-20 px-4 md:px-12 grid grid-cols-12 gap-y-0 text-white"
+>
+  <!-- Header (Desktop Only) -->
+  <div
+    class="hidden md:grid col-span-12 grid-cols-12 border-b border-grid-line pb-4 mb-4 font-mono text-xs opacity-40 uppercase tracking-widest"
+  >
+    <div class="col-span-1">ID</div>
+    <div class="col-span-5">Project Name</div>
+    <div class="col-span-4">Details</div>
+    <div class="col-span-2 text-right">Year</div>
+  </div>
 
-    <!-- Table Header -->
-    <div
-        class="col-span-12 grid grid-cols-12 border-b border-grid-line pb-4 mb-4 font-mono text-xs opacity-40 uppercase tracking-widest">
-        <div class="col-span-1">ID</div>
-        <div class="col-span-6 md:col-span-5">Project Name</div>
-        <div class="col-span-5 md:col-span-4 text-right md:text-left">Details</div>
-        <div class="hidden md:block col-span-2 text-right">Year</div>
-    </div>
+  <!-- Rows -->
+  @for (project of projects(); track project.id; let i = $index) {
+    <a
+      [routerLink]="['/case-study', project.id]"
+      (mouseenter)="onProjectHover(project.image)"
+      (mouseleave)="onProjectLeave()"
+      class="col-span-12 flex flex-col md:grid md:grid-cols-12 border-b border-grid-line py-8 md:py-8 gap-4 md:gap-0 hover:bg-white/5 transition-colors group cursor-pointer md:cursor-none md:items-center"
+    >
+      <!-- ID (Mobile: Small top label, Desktop: col-1) -->
+      <div class="md:col-span-1 font-mono text-xs md:text-sm opacity-50">
+        {{ getFormattedIndex(i) }}
+      </div>
 
-    <!-- Rows -->
-    @for (project of projects(); track project.id; let i = $index) {
-    <a [routerLink]="['/case-study', project.id]" (mouseenter)="onProjectHover(project.image)"
-        (mouseleave)="onProjectLeave()"
-        class="col-span-12 grid grid-cols-12 border-b border-grid-line py-8 hover:bg-white/5 transition-colors group items-center cursor-none">
+      <!-- Title -->
+      <div
+        class="md:col-span-5 text-3xl md:text-4xl font-bold uppercase tracking-tight md:group-hover:translate-x-4 transition-transform duration-500"
+      >
+        {{ project.title }}
+      </div>
 
-        <div class="col-span-1 font-mono text-sm opacity-50">{{ getFormattedIndex(i) }}</div>
+      <!-- Tags -->
+      <div
+        class="md:col-span-4 text-sm font-mono opacity-60 flex flex-wrap gap-2 md:items-center"
+      >
+        @for (tech of project.tags.slice(0, 3); track tech) {
+          <span
+            class="border border-white/20 px-2 py-1 rounded-full text-[10px]"
+            >{{ tech }}</span
+          >
+        }
+      </div>
 
-        <div
-            class="col-span-6 md:col-span-5 text-2xl md:text-4xl font-bold uppercase tracking-tight group-hover:translate-x-4 transition-transform duration-500">
-            {{ project.title }}
-        </div>
-
-        <div
-            class="col-span-5 md:col-span-4 text-right md:text-left text-sm font-mono opacity-60 flex flex-col md:flex-row gap-2">
-            @for(tech of project.tags.slice(0,2); track tech) {
-            <span class="border border-white/20 px-2 py-1 rounded-full text-[10px]">{{ tech }}</span>
-            }
-        </div>
-
-        <div class="hidden md:block col-span-2 text-right font-mono text-sm opacity-40">
-            2024
-        </div>
+      <!-- Year (Desktop Only) -->
+      <div
+        class="hidden md:block md:col-span-2 text-right font-mono text-sm opacity-40"
+      >
+        2024
+      </div>
     </a>
-    }
-
+  }
 </section>

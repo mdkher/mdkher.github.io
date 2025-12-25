@@ -1,10 +1,26 @@
-
-import { Injectable, signal } from '@angular/core';
-import { HeroData, Job, Project, Education, Certification, Award, Publication } from '../models/portfolio.models';
-import { HERO_DATA, EXPERIENCE_DATA, PROJECTS_DATA, SKILLS_DATA, EDUCATION_DATA, CERTIFICATION_DATA, AWARDS_DATA, PUBLICATION_DATA } from '../data/portfolio-data';
+import { Injectable, signal } from "@angular/core";
+import {
+  HeroData,
+  Job,
+  Project,
+  Education,
+  Certification,
+  Award,
+  Publication,
+} from "../models/portfolio.models";
+import {
+  HERO_DATA,
+  EXPERIENCE_DATA,
+  PROJECTS_DATA,
+  SKILLS_DATA,
+  EDUCATION_DATA,
+  CERTIFICATION_DATA,
+  AWARDS_DATA,
+  PUBLICATION_DATA,
+} from "../data/portfolio-data";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PortfolioService {
   // Signals exposing the static data
@@ -18,6 +34,6 @@ export class PortfolioService {
   publication = signal<Publication>(PUBLICATION_DATA);
 
   getProject(id: string) {
-    return this.projects().find(p => p.id === id);
+    return this.projects().find((p) => p.id === id);
   }
 }

@@ -1,33 +1,52 @@
 <section class="px-6 max-w-6xl mx-auto w-full mb-32">
-    <h2 class="text-xl font-serif text-slate-900 dark:text-white mb-8">Recognition</h2>
+  <h2 class="text-xl font-serif text-slate-900 dark:text-white mb-8">
+    Recognition
+  </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        @for (award of awards(); track award.title) {
-        <div
-            class="bg-white dark:bg-[#111] border border-black/5 dark:border-white/5 p-6 rounded-2xl hover:border-black/20 dark:hover:border-white/10 transition-colors shadow-sm dark:shadow-none">
-            <span class="text-xs text-slate-500 block mb-2">{{ award.date }}</span>
-            <h3 class="text-slate-900 dark:text-white font-medium mb-1">{{ award.title }}</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 font-light">{{ award.desc }}</p>
-        </div>
-        }
-    </div>
-
-    @if (publication(); as pub) {
-    <div
-        class="mt-8 bg-white dark:bg-[#151515] p-8 rounded-2xl border border-black/5 dark:border-white/5 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between shadow-sm dark:shadow-none">
-        <div>
-            <div
-                class="inline-block px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-300 text-xs rounded mb-2">
-                Publication</div>
-            <h3 class="text-slate-900 dark:text-white font-serif italic text-lg mb-1">{{ pub.conference }} {{ pub.year
-                }}</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm font-light max-w-xl">{{ pub.desc }}</p>
-        </div>
-        @if(pub.link) {
-        <a [href]="pub.link"
-            class="text-slate-900 dark:text-white text-sm border-b border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors pb-0.5">Read
-            Paper</a>
-        }
-    </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    @for (award of awards(); track award.title) {
+      <div
+        class="bg-white dark:bg-[#111] border border-black/5 dark:border-white/5 p-6 rounded-2xl hover:border-black/20 dark:hover:border-white/10 transition-colors shadow-sm dark:shadow-none"
+      >
+        <span class="text-xs text-slate-500 block mb-2">{{ award.date }}</span>
+        <h3 class="text-slate-900 dark:text-white font-medium mb-1">
+          {{ award.title }}
+        </h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 font-light">
+          {{ award.desc }}
+        </p>
+      </div>
     }
+  </div>
+
+  @if (publication(); as pub) {
+    <div
+      class="mt-8 bg-white dark:bg-[#151515] p-8 rounded-2xl border border-black/5 dark:border-white/5 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between shadow-sm dark:shadow-none"
+    >
+      <div>
+        <div
+          class="inline-block px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-300 text-xs rounded mb-2"
+        >
+          Publication
+        </div>
+        <h3
+          class="text-slate-900 dark:text-white font-serif italic text-lg mb-1"
+        >
+          {{ pub.conference }} {{ pub.year }}
+        </h3>
+        <p
+          class="text-slate-600 dark:text-slate-400 text-sm font-light max-w-xl"
+        >
+          {{ pub.desc }}
+        </p>
+      </div>
+      @if (pub.link) {
+        <a
+          [href]="pub.link"
+          class="text-slate-900 dark:text-white text-sm border-b border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors pb-0.5"
+          >Read Paper</a
+        >
+      }
+    </div>
+  }
 </section>

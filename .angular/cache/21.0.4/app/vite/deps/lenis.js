@@ -1,6 +1,4 @@
-import {
-  __spreadValues
-} from "./chunk-GOMI4DH3.js";
+import { __spreadValues } from "./chunk-GOMI4DH3.js";
 
 // node_modules/lenis/dist/lenis.mjs
 var version = "1.3.16";
@@ -14,7 +12,7 @@ function damp(x, y, lambda, deltaTime) {
   return lerp(x, y, 1 - Math.exp(-lambda * deltaTime));
 }
 function modulo(n, d) {
-  return (n % d + d) % d;
+  return ((n % d) + d) % d;
 }
 var Animate = class {
   isRunning = false;
@@ -82,7 +80,7 @@ var Animate = class {
 };
 function debounce(callback, delay) {
   let timer;
-  return function(...args) {
+  return function (...args) {
     let context = this;
     clearTimeout(timer);
     timer = setTimeout(() => {
@@ -92,7 +90,11 @@ function debounce(callback, delay) {
   };
 }
 var Dimensions = class {
-  constructor(wrapper, content, { autoResize = true, debounce: debounceValue = 250 } = {}) {
+  constructor(
+    wrapper,
+    content,
+    { autoResize = true, debounce: debounceValue = 250 } = {},
+  ) {
     this.wrapper = wrapper;
     this.content = content;
     if (autoResize) {
@@ -148,7 +150,7 @@ var Dimensions = class {
   get limit() {
     return {
       x: this.scrollWidth - this.width,
-      y: this.scrollHeight - this.height
+      y: this.scrollHeight - this.height,
     };
   }
 };
@@ -204,26 +206,26 @@ var VirtualScroll = class {
     this.element.addEventListener(
       "touchstart",
       this.onTouchStart,
-      listenerOptions
+      listenerOptions,
     );
     this.element.addEventListener(
       "touchmove",
       this.onTouchMove,
-      listenerOptions
+      listenerOptions,
     );
     this.element.addEventListener("touchend", this.onTouchEnd, listenerOptions);
   }
   touchStart = {
     x: 0,
-    y: 0
+    y: 0,
   };
   lastDelta = {
     x: 0,
-    y: 0
+    y: 0,
   };
   window = {
     width: 0,
-    height: 0
+    height: 0,
   };
   emitter = new Emitter();
   /**
@@ -243,17 +245,17 @@ var VirtualScroll = class {
     this.element.removeEventListener(
       "touchstart",
       this.onTouchStart,
-      listenerOptions
+      listenerOptions,
     );
     this.element.removeEventListener(
       "touchmove",
       this.onTouchMove,
-      listenerOptions
+      listenerOptions,
     );
     this.element.removeEventListener(
       "touchend",
       this.onTouchEnd,
-      listenerOptions
+      listenerOptions,
     );
   }
   /**
@@ -262,48 +264,56 @@ var VirtualScroll = class {
    * @param event Touch event
    */
   onTouchStart = (event) => {
-    const { clientX, clientY } = event.targetTouches ? event.targetTouches[0] : event;
+    const { clientX, clientY } = event.targetTouches
+      ? event.targetTouches[0]
+      : event;
     this.touchStart.x = clientX;
     this.touchStart.y = clientY;
     this.lastDelta = {
       x: 0,
-      y: 0
+      y: 0,
     };
     this.emitter.emit("scroll", {
       deltaX: 0,
       deltaY: 0,
-      event
+      event,
     });
   };
   /** Event handler for 'touchmove' event */
   onTouchMove = (event) => {
-    const { clientX, clientY } = event.targetTouches ? event.targetTouches[0] : event;
-    const deltaX = -(clientX - this.touchStart.x) * this.options.touchMultiplier;
-    const deltaY = -(clientY - this.touchStart.y) * this.options.touchMultiplier;
+    const { clientX, clientY } = event.targetTouches
+      ? event.targetTouches[0]
+      : event;
+    const deltaX =
+      -(clientX - this.touchStart.x) * this.options.touchMultiplier;
+    const deltaY =
+      -(clientY - this.touchStart.y) * this.options.touchMultiplier;
     this.touchStart.x = clientX;
     this.touchStart.y = clientY;
     this.lastDelta = {
       x: deltaX,
-      y: deltaY
+      y: deltaY,
     };
     this.emitter.emit("scroll", {
       deltaX,
       deltaY,
-      event
+      event,
     });
   };
   onTouchEnd = (event) => {
     this.emitter.emit("scroll", {
       deltaX: this.lastDelta.x,
       deltaY: this.lastDelta.y,
-      event
+      event,
     });
   };
   /** Event handler for 'wheel' event */
   onWheel = (event) => {
     let { deltaX, deltaY, deltaMode } = event;
-    const multiplierX = deltaMode === 1 ? LINE_HEIGHT : deltaMode === 2 ? this.window.width : 1;
-    const multiplierY = deltaMode === 1 ? LINE_HEIGHT : deltaMode === 2 ? this.window.height : 1;
+    const multiplierX =
+      deltaMode === 1 ? LINE_HEIGHT : deltaMode === 2 ? this.window.width : 1;
+    const multiplierY =
+      deltaMode === 1 ? LINE_HEIGHT : deltaMode === 2 ? this.window.height : 1;
     deltaX *= multiplierX;
     deltaY *= multiplierY;
     deltaX *= this.options.wheelMultiplier;
@@ -313,7 +323,7 @@ var VirtualScroll = class {
   onWindowResize = () => {
     this.window = {
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight,
     };
   };
 };
@@ -406,7 +416,7 @@ var Lenis = class {
     autoToggle = false,
     // https://caniuse.com/?search=transition-behavior
     allowNestedScroll = false,
-    __experimental__naiveDimensions = false
+    __experimental__naiveDimensions = false,
   } = {}) {
     window.lenisVersion = version;
     if (!wrapper || wrapper === document.documentElement) {
@@ -441,36 +451,32 @@ var Lenis = class {
       anchors,
       autoToggle,
       allowNestedScroll,
-      __experimental__naiveDimensions
+      __experimental__naiveDimensions,
     };
     this.dimensions = new Dimensions(wrapper, content, { autoResize });
     this.updateClassName();
     this.targetScroll = this.animatedScroll = this.actualScroll;
     this.options.wrapper.addEventListener("scroll", this.onNativeScroll, false);
     this.options.wrapper.addEventListener("scrollend", this.onScrollEnd, {
-      capture: true
+      capture: true,
     });
     if (this.options.anchors && this.options.wrapper === window) {
-      this.options.wrapper.addEventListener(
-        "click",
-        this.onClick,
-        false
-      );
+      this.options.wrapper.addEventListener("click", this.onClick, false);
     }
     this.options.wrapper.addEventListener(
       "pointerdown",
       this.onPointerDown,
-      false
+      false,
     );
     this.virtualScroll = new VirtualScroll(eventsTarget, {
       touchMultiplier,
-      wheelMultiplier
+      wheelMultiplier,
     });
     this.virtualScroll.on("scroll", this.onVirtualScroll);
     if (this.options.autoToggle) {
       this.checkOverflow();
       this.rootElement.addEventListener("transitionend", this.onTransitionEnd, {
-        passive: true
+        passive: true,
       });
     }
     if (this.options.autoRaf) {
@@ -485,22 +491,18 @@ var Lenis = class {
     this.options.wrapper.removeEventListener(
       "scroll",
       this.onNativeScroll,
-      false
+      false,
     );
     this.options.wrapper.removeEventListener("scrollend", this.onScrollEnd, {
-      capture: true
+      capture: true,
     });
     this.options.wrapper.removeEventListener(
       "pointerdown",
       this.onPointerDown,
-      false
+      false,
     );
     if (this.options.anchors && this.options.wrapper === window) {
-      this.options.wrapper.removeEventListener(
-        "click",
-        this.onClick,
-        false
-      );
+      this.options.wrapper.removeEventListener("click", this.onClick, false);
     }
     this.virtualScroll.destroy();
     this.dimensions.destroy();
@@ -528,9 +530,9 @@ var Lenis = class {
         bubbles: this.options.wrapper === window,
         // cancelable: false,
         detail: {
-          lenisScrollEnd: true
-        }
-      })
+          lenisScrollEnd: true,
+        },
+      }),
     );
   };
   get overflow() {
@@ -559,12 +561,17 @@ var Lenis = class {
   onClick = (event) => {
     const path = event.composedPath();
     const anchor = path.find(
-      (node) => node instanceof HTMLAnchorElement && node.getAttribute("href")?.includes("#")
+      (node) =>
+        node instanceof HTMLAnchorElement &&
+        node.getAttribute("href")?.includes("#"),
     );
     if (anchor) {
       const href = anchor.getAttribute("href");
       if (href) {
-        const options = typeof this.options.anchors === "object" && this.options.anchors ? this.options.anchors : void 0;
+        const options =
+          typeof this.options.anchors === "object" && this.options.anchors
+            ? this.options.anchors
+            : void 0;
         const target = `#${href.split("#")[1]}`;
         this.scrollTo(target, options);
       }
@@ -576,7 +583,10 @@ var Lenis = class {
     }
   };
   onVirtualScroll = (data) => {
-    if (typeof this.options.virtualScroll === "function" && this.options.virtualScroll(data) === false)
+    if (
+      typeof this.options.virtualScroll === "function" &&
+      this.options.virtualScroll(data) === false
+    )
       return;
     const { deltaX, deltaY, event } = data;
     this.emitter.emit("virtual-scroll", { deltaX, deltaY, event });
@@ -586,21 +596,41 @@ var Lenis = class {
     const isWheel = event.type.includes("wheel");
     this.isTouching = event.type === "touchstart" || event.type === "touchmove";
     const isClickOrTap = deltaX === 0 && deltaY === 0;
-    const isTapToStop = this.options.syncTouch && isTouch && event.type === "touchstart" && isClickOrTap && !this.isStopped && !this.isLocked;
+    const isTapToStop =
+      this.options.syncTouch &&
+      isTouch &&
+      event.type === "touchstart" &&
+      isClickOrTap &&
+      !this.isStopped &&
+      !this.isLocked;
     if (isTapToStop) {
       this.reset();
       return;
     }
-    const isUnknownGesture = this.options.gestureOrientation === "vertical" && deltaY === 0 || this.options.gestureOrientation === "horizontal" && deltaX === 0;
+    const isUnknownGesture =
+      (this.options.gestureOrientation === "vertical" && deltaY === 0) ||
+      (this.options.gestureOrientation === "horizontal" && deltaX === 0);
     if (isClickOrTap || isUnknownGesture) {
       return;
     }
     let composedPath = event.composedPath();
-    composedPath = composedPath.slice(0, composedPath.indexOf(this.rootElement));
+    composedPath = composedPath.slice(
+      0,
+      composedPath.indexOf(this.rootElement),
+    );
     const prevent = this.options.prevent;
-    if (!!composedPath.find(
-      (node) => node instanceof HTMLElement && (typeof prevent === "function" && prevent?.(node) || node.hasAttribute?.("data-lenis-prevent") || isTouch && node.hasAttribute?.("data-lenis-prevent-touch") || isWheel && node.hasAttribute?.("data-lenis-prevent-wheel") || this.options.allowNestedScroll && this.checkNestedScroll(node, { deltaX, deltaY }))
-    ))
+    if (
+      !!composedPath.find(
+        (node) =>
+          node instanceof HTMLElement &&
+          ((typeof prevent === "function" && prevent?.(node)) ||
+            node.hasAttribute?.("data-lenis-prevent") ||
+            (isTouch && node.hasAttribute?.("data-lenis-prevent-touch")) ||
+            (isWheel && node.hasAttribute?.("data-lenis-prevent-wheel")) ||
+            (this.options.allowNestedScroll &&
+              this.checkNestedScroll(node, { deltaX, deltaY }))),
+      )
+    )
       return;
     if (this.isStopped || this.isLocked) {
       if (event.cancelable) {
@@ -608,7 +638,9 @@ var Lenis = class {
       }
       return;
     }
-    const isSmooth = this.options.syncTouch && isTouch || this.options.smoothWheel && isWheel;
+    const isSmooth =
+      (this.options.syncTouch && isTouch) ||
+      (this.options.smoothWheel && isWheel);
     if (!isSmooth) {
       this.isScrolling = "native";
       this.animate.stop();
@@ -621,7 +653,15 @@ var Lenis = class {
     } else if (this.options.gestureOrientation === "horizontal") {
       delta = deltaX;
     }
-    if (!this.options.overscroll || this.options.infinite || this.options.wrapper !== window && this.limit > 0 && (this.animatedScroll > 0 && this.animatedScroll < this.limit || this.animatedScroll === 0 && deltaY > 0 || this.animatedScroll === this.limit && deltaY < 0)) {
+    if (
+      !this.options.overscroll ||
+      this.options.infinite ||
+      (this.options.wrapper !== window &&
+        this.limit > 0 &&
+        ((this.animatedScroll > 0 && this.animatedScroll < this.limit) ||
+          (this.animatedScroll === 0 && deltaY > 0) ||
+          (this.animatedScroll === this.limit && deltaY < 0)))
+    ) {
       event.lenisStopPropagation = true;
     }
     if (event.cancelable) {
@@ -631,18 +671,28 @@ var Lenis = class {
     const isTouchEnd = isTouch && event.type === "touchend";
     const hasTouchInertia = isTouchEnd;
     if (hasTouchInertia) {
-      delta = Math.sign(this.velocity) * Math.pow(Math.abs(this.velocity), this.options.touchInertiaExponent);
+      delta =
+        Math.sign(this.velocity) *
+        Math.pow(Math.abs(this.velocity), this.options.touchInertiaExponent);
     }
-    this.scrollTo(this.targetScroll + delta, __spreadValues({
-      programmatic: false
-    }, isSyncTouch ? {
-      lerp: hasTouchInertia ? this.options.syncTouchLerp : 1
-      // immediate: !hasTouchInertia,
-    } : {
-      lerp: this.options.lerp,
-      duration: this.options.duration,
-      easing: this.options.easing
-    }));
+    this.scrollTo(
+      this.targetScroll + delta,
+      __spreadValues(
+        {
+          programmatic: false,
+        },
+        isSyncTouch
+          ? {
+              lerp: hasTouchInertia ? this.options.syncTouchLerp : 1,
+              // immediate: !hasTouchInertia,
+            }
+          : {
+              lerp: this.options.lerp,
+              duration: this.options.duration,
+              easing: this.options.easing,
+            },
+      ),
+    );
   };
   /**
    * Force lenis to recalculate the dimensions
@@ -669,9 +719,7 @@ var Lenis = class {
       this.animatedScroll = this.targetScroll = this.actualScroll;
       this.lastVelocity = this.velocity;
       this.velocity = this.animatedScroll - lastScroll;
-      this.direction = Math.sign(
-        this.animatedScroll - lastScroll
-      );
+      this.direction = Math.sign(this.animatedScroll - lastScroll);
       if (!this.isStopped) {
         this.isScrolling = "native";
       }
@@ -760,25 +808,34 @@ var Lenis = class {
    *   },
    * })
    */
-  scrollTo(target, {
-    offset = 0,
-    immediate = false,
-    lock = false,
-    duration = this.options.duration,
-    easing = this.options.easing,
-    lerp: lerp2 = this.options.lerp,
-    onStart,
-    onComplete,
-    force = false,
-    // scroll even if stopped
-    programmatic = true,
-    // called from outside of the class
-    userData
-  } = {}) {
+  scrollTo(
+    target,
+    {
+      offset = 0,
+      immediate = false,
+      lock = false,
+      duration = this.options.duration,
+      easing = this.options.easing,
+      lerp: lerp2 = this.options.lerp,
+      onStart,
+      onComplete,
+      force = false,
+      // scroll even if stopped
+      programmatic = true,
+      // called from outside of the class
+      userData,
+    } = {},
+  ) {
     if ((this.isStopped || this.isLocked) && !force) return;
-    if (typeof target === "string" && ["top", "left", "start", "#"].includes(target)) {
+    if (
+      typeof target === "string" &&
+      ["top", "left", "start", "#"].includes(target)
+    ) {
       target = 0;
-    } else if (typeof target === "string" && ["bottom", "right", "end"].includes(target)) {
+    } else if (
+      typeof target === "string" &&
+      ["bottom", "right", "end"].includes(target)
+    ) {
       target = this.limit;
     } else {
       let node;
@@ -800,7 +857,8 @@ var Lenis = class {
           offset -= this.isHorizontal ? wrapperRect.left : wrapperRect.top;
         }
         const rect = node.getBoundingClientRect();
-        target = (this.isHorizontal ? rect.left : rect.top) + this.animatedScroll;
+        target =
+          (this.isHorizontal ? rect.left : rect.top) + this.animatedScroll;
       }
     }
     if (typeof target !== "number") return;
@@ -876,7 +934,7 @@ var Lenis = class {
           });
           this.preventNextNativeScrollEvent();
         }
-      }
+      },
     });
   }
   preventNextNativeScrollEvent() {
@@ -887,8 +945,15 @@ var Lenis = class {
   }
   checkNestedScroll(node, { deltaX, deltaY }) {
     const time = Date.now();
-    const cache = node._lenis ??= {};
-    let hasOverflowX, hasOverflowY, isScrollableX, isScrollableY, scrollWidth, scrollHeight, clientWidth, clientHeight;
+    const cache = (node._lenis ??= {});
+    let hasOverflowX,
+      hasOverflowY,
+      isScrollableX,
+      isScrollableY,
+      scrollWidth,
+      scrollHeight,
+      clientWidth,
+      clientHeight;
     const gestureOrientation = this.options.gestureOrientation;
     if (time - (cache.time ?? 0) > 2e3) {
       cache.time = Date.now();
@@ -925,12 +990,18 @@ var Lenis = class {
       clientWidth = cache.clientWidth;
       clientHeight = cache.clientHeight;
     }
-    if (!hasOverflowX && !hasOverflowY || !isScrollableX && !isScrollableY) {
+    if (
+      (!hasOverflowX && !hasOverflowY) ||
+      (!isScrollableX && !isScrollableY)
+    ) {
       return false;
     }
     if (gestureOrientation === "vertical" && (!hasOverflowY || !isScrollableY))
       return false;
-    if (gestureOrientation === "horizontal" && (!hasOverflowX || !isScrollableX))
+    if (
+      gestureOrientation === "horizontal" &&
+      (!hasOverflowX || !isScrollableX)
+    )
       return false;
     let orientation;
     if (gestureOrientation === "horizontal") {
@@ -971,7 +1042,9 @@ var Lenis = class {
    * The root element on which lenis is instanced
    */
   get rootElement() {
-    return this.options.wrapper === window ? document.documentElement : this.options.wrapper;
+    return this.options.wrapper === window
+      ? document.documentElement
+      : this.options.wrapper;
   }
   /**
    * The limit which is the maximum scroll value
@@ -998,13 +1071,17 @@ var Lenis = class {
    */
   get actualScroll() {
     const wrapper = this.options.wrapper;
-    return this.isHorizontal ? wrapper.scrollX ?? wrapper.scrollLeft : wrapper.scrollY ?? wrapper.scrollTop;
+    return this.isHorizontal
+      ? (wrapper.scrollX ?? wrapper.scrollLeft)
+      : (wrapper.scrollY ?? wrapper.scrollTop);
   }
   /**
    * The current scroll value
    */
   get scroll() {
-    return this.options.infinite ? modulo(this.animatedScroll, this.limit) : this.animatedScroll;
+    return this.options.infinite
+      ? modulo(this.animatedScroll, this.limit)
+      : this.animatedScroll;
   }
   /**
    * The progress of the scroll relative to the limit
@@ -1068,13 +1145,14 @@ var Lenis = class {
   }
   updateClassName() {
     this.cleanUpClassName();
-    this.rootElement.className = `${this.rootElement.className} ${this.className}`.trim();
+    this.rootElement.className =
+      `${this.rootElement.className} ${this.className}`.trim();
   }
   cleanUpClassName() {
-    this.rootElement.className = this.rootElement.className.replace(/lenis(-\w+)?/g, "").trim();
+    this.rootElement.className = this.rootElement.className
+      .replace(/lenis(-\w+)?/g, "")
+      .trim();
   }
 };
-export {
-  Lenis as default
-};
+export { Lenis as default };
 //# sourceMappingURL=lenis.js.map

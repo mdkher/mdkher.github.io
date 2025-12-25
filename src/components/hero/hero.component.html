@@ -1,42 +1,54 @@
 @if (heroData(); as data) {
-<section class="min-h-screen w-full relative grid grid-cols-12 gap-4 px-4 md:px-8 content-center overflow-hidden pt-20">
-
-  <!-- Heavy Type Logic -->
-  <div
-    class="col-span-12 flex flex-col uppercase font-black leading-[0.85] tracking-tighter text-[13vw] md:text-[11vw] mix-blend-normal z-20">
-    <div class="flex items-center">
-      <span #magnetic class="inline-block cursor-default">{{ data.titleLine1 }}</span>
-    </div>
-    <div class="flex items-center self-end">
-      <span #magnetic class="inline-block cursor-default">{{
-        data.titleLine2 }}</span>
-    </div>
-  </div>
-
-  <!-- Metadata Grid -->
-  <div
-    class="col-span-12 md:col-span-12 grid grid-cols-12 gap-4 mt-12 md:mt-24 font-mono text-xs md:text-sm opacity-60">
-
-    <div class="col-span-6 md:col-span-2 border-t border-grid-line pt-4">
-      <span class="block mb-2 text-white/40">[ ROLE ]</span>
-      <span>CREATIVE DEV</span>
-    </div>
-
-    <div class="col-span-6 md:col-span-2 border-t border-grid-line pt-4">
-      <span class="block mb-2 text-white/40">[ LOCATION ]</span>
-      <span>{{ data.location }}</span>
+  <section
+    class="min-h-screen w-full relative grid grid-cols-12 gap-4 px-4 md:px-8 content-center overflow-hidden pt-20"
+  >
+    <!-- Heavy Type Logic -->
+    <div
+      class="col-span-12 flex flex-col uppercase font-black leading-[0.85] tracking-tighter text-[13vw] md:text-[11vw] mix-blend-normal z-20"
+    >
+      <div class="flex items-center">
+        <span
+          #magnetic
+          class="inline-block cursor-default"
+          >{{ data.titleLine1 }}</span
+        >
+      </div>
+      <div class="flex items-center self-end">
+        <span
+          #magnetic
+          class="inline-block cursor-default"
+          >{{ data.titleLine2 }}</span
+        >
+      </div>
     </div>
 
-    <div class="col-span-12 md: col-span-4 md:col-start-9 border-t border-grid-line pt-4">
-      <span class="block mb-2 text-white/40">[ BIOGRAPHY ]</span>
-      <p class="max-w-md leading-relaxed">{{ data.bio }}</p>
+    <!-- Metadata Grid -->
+    <div
+      class="col-span-12 md:col-span-12 grid grid-cols-12 gap-4 mt-12 md:mt-24 font-mono text-xs md:text-sm opacity-60"
+    >
+      <div class="col-span-6 md:col-span-2 border-t border-grid-line pt-4">
+        <span class="block mb-2 text-white/40">[ ROLE ]</span>
+        <span>CREATIVE DEV</span>
+      </div>
+
+      <div class="col-span-6 md:col-span-2 border-t border-grid-line pt-4">
+        <span class="block mb-2 text-white/40">[ LOCATION ]</span>
+        <span>{{ data.location }}</span>
+      </div>
+
+      <div
+        class="col-span-12 md: col-span-4 md:col-start-9 border-t border-grid-line pt-4"
+      >
+        <span class="block mb-2 text-white/40">[ BIOGRAPHY ]</span>
+        <p class="max-w-md leading-relaxed">{{ data.bio }}</p>
+      </div>
     </div>
-  </div>
 
-  <!-- Decoration -->
-  <div class="absolute bottom-10 left-8 md:left-12 font-mono text-[10px] opacity-20 rotate-90 origin-bottom-left">
-    FIG. 01 — HERO_VIEW
-  </div>
-
-</section>
+    <!-- Decoration -->
+    <div
+      class="absolute bottom-10 left-8 md:left-12 font-mono text-[10px] opacity-20 rotate-90 origin-bottom-left"
+    >
+      FIG. 01 — HERO_VIEW
+    </div>
+  </section>
 }

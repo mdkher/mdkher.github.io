@@ -417,7 +417,7 @@ import {
   ɵɵtwoWayProperty,
   ɵɵvalidateAttribute,
   ɵɵviewQuery,
-  ɵɵviewQuerySignal
+  ɵɵviewQuerySignal,
 } from "./chunk-YJCAQK7J.js";
 import {
   CONTAINER_HEADER_OFFSET,
@@ -499,10 +499,10 @@ import {
   ɵɵnamespaceMathML,
   ɵɵnamespaceSVG,
   ɵɵresetView,
-  ɵɵrestoreView
+  ɵɵrestoreView,
 } from "./chunk-NAAZ6BAQ.js";
-import "./chunk-JRFR6BLO.js";
 import "./chunk-HWYXSU2G.js";
+import "./chunk-JRFR6BLO.js";
 import "./chunk-MARUHEWW.js";
 import "./chunk-GOMI4DH3.js";
 export {
@@ -1006,5 +1006,5 @@ export {
   ɵɵtwoWayProperty,
   ɵɵvalidateAttribute,
   ɵɵviewQuery,
-  ɵɵviewQuerySignal
+  ɵɵviewQuerySignal,
 };

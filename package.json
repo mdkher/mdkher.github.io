@@ -7,7 +7,7 @@
     "dev": "ng serve",
     "build": "ng build",
     "preview": "ng serve --configuration=production",
-    "deploy": "ng build --base-href=/manan-kher-portfolio/ && gh-pages -d dist"
+    "deploy": "ng build --base-href=/ && cp dist/index.html dist/404.html && touch dist/.nojekyll && gh-pages -d dist"
   },
   "dependencies": {
     "@angular/build": "^21.0.0",

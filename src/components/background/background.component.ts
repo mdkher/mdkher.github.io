@@ -1,17 +1,24 @@
-
-import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, inject, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ThemeService } from '../../services/theme.service';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+  OnDestroy,
+  inject,
+  effect,
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ThemeService } from "../../services/theme.service";
 
 @Component({
-  selector: 'app-background',
+  selector: "app-background",
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './background.component.html',
-  styleUrls: ['./background.component.css']
+  templateUrl: "./background.component.html",
+  styleUrls: ["./background.component.css"],
 })
 export class BackgroundComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild("canvas") canvasRef!: ElementRef<HTMLCanvasElement>;
   private themeService = inject(ThemeService);
   private animationId: number | null = null;
 
@@ -31,12 +38,12 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
     this.initCanvas();
     this.initOrbs();
     this.animate();
-    window.addEventListener('resize', this.onResize.bind(this));
+    window.addEventListener("resize", this.onResize.bind(this));
   }
 
   ngOnDestroy() {
     if (this.animationId) cancelAnimationFrame(this.animationId);
-    window.removeEventListener('resize', this.onResize.bind(this));
+    window.removeEventListener("resize", this.onResize.bind(this));
   }
 
   private initCanvas() {
@@ -63,20 +70,20 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
 
     // More vibrant, "creative" palettes
     const darkColors = [
-      '#4338ca', // Indigo 700
-      '#3b82f6', // Blue 500
-      '#7c3aed', // Violet 600
-      '#db2777', // Pink 600
-      '#0f172a'  // Slate 900 (Depth)
+      "#4338ca", // Indigo 700
+      "#3b82f6", // Blue 500
+      "#7c3aed", // Violet 600
+      "#db2777", // Pink 600
+      "#0f172a", // Slate 900 (Depth)
     ];
 
     // Subtle but defined pastels for light mode (Contrast safe against white)
     const lightColors = [
-      '#a5b4fc', // Indigo 300
-      '#c4b5fd', // Violet 300
-      '#67e8f9', // Cyan 300
-      '#f9a8d4', // Pink 300
-      '#93c5fd'  // Blue 300
+      "#a5b4fc", // Indigo 300
+      "#c4b5fd", // Violet 300
+      "#67e8f9", // Cyan 300
+      "#f9a8d4", // Pink 300
+      "#93c5fd", // Blue 300
     ];
 
     const colors = isDark ? darkColors : lightColors;
@@ -85,20 +92,20 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
       this.orbs.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * (width * 0.3) + (width * 0.1), // Varied sizes
+        radius: Math.random() * (width * 0.3) + width * 0.1, // Varied sizes
         // Faster movement for "creative" feel
         vx: (Math.random() - 0.5) * 1.5,
         vy: (Math.random() - 0.5) * 1.5,
         color: colors[i % colors.length],
         growth: Math.random() * 0.02, // Pulse effect
-        maxRadius: Math.random() * (width * 0.4) + (width * 0.2)
+        maxRadius: Math.random() * (width * 0.4) + width * 0.2,
       });
     }
   }
 
   private animate() {
     const canvas = this.canvasRef.nativeElement;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const width = canvas.width;
@@ -108,11 +115,11 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
     ctx.clearRect(0, 0, width, height);
 
     // Base Background
-    ctx.fillStyle = this.themeService.isDark() ? '#080808' : '#F8FAFC';
+    ctx.fillStyle = this.themeService.isDark() ? "#080808" : "#F8FAFC";
     ctx.fillRect(0, 0, width, height);
 
     // Update and Draw Orbs
-    this.orbs.forEach(orb => {
+    this.orbs.forEach((orb) => {
       orb.x += orb.vx;
       orb.y += orb.vy;
 
@@ -126,7 +133,14 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
       if (orb.y > height + orb.radius * 0.5) orb.vy = -Math.abs(orb.vy);
 
       // Draw Gradient Orb
-      const gradient = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.radius);
+      const gradient = ctx.createRadialGradient(
+        orb.x,
+        orb.y,
+        0,
+        orb.x,
+        orb.y,
+        orb.radius,
+      );
 
       // More realistic alpha blending
       const alpha = this.themeService.isDark() ? 0.4 : 0.25;

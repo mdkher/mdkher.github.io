@@ -1,31 +1,31 @@
-    .stroke-text {
-      /* Slate 500 for good contrast in Light Mode */
-      -webkit-text-stroke: 1.5px #64748b;
-      color: transparent;
-    }
+.stroke-text {
+  /* Slate 500 for good contrast in Light Mode */
+  -webkit-text-stroke: 1.5px #64748b;
+  color: transparent;
+}
 
-    :host-context(.dark) .stroke-text {
-      /* Slate 600 for subtle look in Dark Mode */
-      -webkit-text-stroke: 1.5px #475569;
-    }
+:host-context(.dark) .stroke-text {
+  /* Slate 600 for subtle look in Dark Mode */
+  -webkit-text-stroke: 1.5px #475569;
+}
 
-    /* Media query fallback */
-    @media (prefers-color-scheme: dark) {
-      .stroke-text {
-        -webkit-text-stroke: 1.5px #475569;
-      }
-    }
+/* Media query fallback */
+@media (prefers-color-scheme: dark) {
+  .stroke-text {
+    -webkit-text-stroke: 1.5px #475569;
+  }
+}
 
-    .marquee-content {
-      animation: scroll 30s linear infinite;
-    }
+.marquee-content {
+  animation: scroll 30s linear infinite;
+}
 
-    @keyframes scroll {
-      from {
-        transform: translateX(0);
-      }
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
 
-      to {
-        transform: translateX(-50%);
-      }
-    }
+  to {
+    transform: translateX(-50%);
+  }
+}

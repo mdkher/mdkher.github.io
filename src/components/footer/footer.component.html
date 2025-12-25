@@ -1,52 +1,72 @@
-<footer class="w-full relative pt-20 pb-40 px-4 md:px-12 bg-ink text-white border-t border-grid-line overflow-hidden">
-
-    <!-- Large Text / CTA -->
-    <div class="grid grid-cols-12 gap-y-12 mb-20">
-        <div class="col-span-12 md:col-span-8">
-            <h2
-                class="text-[12vw] md:text-[8vw] leading-[0.85] font-black uppercase tracking-tighter mix-blend-difference mb-8">
-                Let's<br>Connect
-            </h2>
-            <a href="mailto:mdkher@gmail.com"
-                class="inline-flex items-center gap-4 text-xs font-mono uppercase tracking-widest px-6 py-3 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all duration-300">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                Initiate_Transmission
-            </a>
-        </div>
-
-        <div
-            class="col-span-12 md:col-span-4 flex flex-col justify-end items-start md:items-end font-mono text-xs opacity-60">
-            <div class="mb-8 text-right hidden md:block">
-                <span class="block text-white/40 mb-1">[ SYSTEM_TIME ]</span>
-                <span class="text-xl md:text-2xl">{{ currentTime() }}</span>
-            </div>
-
-            <nav class="flex flex-col gap-2 text-right">
-                <span class="block text-white/40 mb-2">[ SOCIAL_UPLINKS ]</span>
-                <a href="https://linkedin.com/in/manan-kher" target="_blank"
-                    class="hover:text-white hover:underline decoration-1 underline-offset-4 transition-colors">LINKEDIN_V2.0</a>
-                <a href="https://github.com/manan-kher" target="_blank"
-                    class="hover:text-white hover:underline decoration-1 underline-offset-4 transition-colors">GITHUB_REPO</a>
-                <a href="https://twitter.com/manankher" target="_blank"
-                    class="hover:text-white hover:underline decoration-1 underline-offset-4 transition-colors">X_PLATFORM</a>
-            </nav>
-        </div>
+<footer
+  class="w-full relative pt-20 pb-40 px-4 md:px-12 bg-ink text-white border-t border-grid-line overflow-hidden"
+>
+  <!-- Large Text / CTA -->
+  <div class="grid grid-cols-12 gap-y-12 mb-20">
+    <div class="col-span-12 md:col-span-8">
+      <h2
+        class="text-[12vw] md:text-[8vw] leading-[0.85] font-black uppercase tracking-tighter mix-blend-difference mb-8"
+      >
+        Let's<br />Connect
+      </h2>
+      <a
+        href="mailto:mdkher@gmail.com"
+        class="inline-flex items-center gap-4 text-xs font-mono uppercase tracking-widest px-6 py-3 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all duration-300"
+      >
+        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+        Initiate_Transmission
+      </a>
     </div>
 
-    <!-- Bottom Bar -->
     <div
-        class="grid grid-cols-12 border-t border-grid-line pt-8 font-mono text-[10px] uppercase opacity-40 tracking-wider">
-        <div class="col-span-6 md:col-span-4 max-w-xs">
-            © {{ currentYear }} Manan Kher.<br>
-            All systems nominal.
-        </div>
+      class="col-span-12 md:col-span-4 flex flex-col justify-end items-start md:items-end font-mono text-xs opacity-60"
+    >
+      <div class="mb-8 text-right hidden md:block">
+        <span class="block text-white/40 mb-1">[ SYSTEM_TIME ]</span>
+        <span class="text-xl md:text-2xl">{{ currentTime() }}</span>
+      </div>
 
-        <div class="col-span-6 md:col-span-8 flex justify-end gap-8">
-            <button (click)="scrollToTop()" class="hover:text-white transition-colors flex items-center gap-2 group">
-                [ RETURN_TO_TOP ]
-                <span class="group-hover:-translate-y-1 transition-transform">↑</span>
-            </button>
-        </div>
+      <nav class="flex flex-col gap-2 text-right">
+        <span class="block text-white/40 mb-2">[ SOCIAL_UPLINKS ]</span>
+        <a
+          href="https://linkedin.com/in/manan-kher"
+          target="_blank"
+          class="hover:text-white hover:underline decoration-1 underline-offset-4 transition-colors"
+          >LINKEDIN_V2.0</a
+        >
+        <a
+          href="https://github.com/manan-kher"
+          target="_blank"
+          class="hover:text-white hover:underline decoration-1 underline-offset-4 transition-colors"
+          >GITHUB_REPO</a
+        >
+        <a
+          href="https://twitter.com/manankher"
+          target="_blank"
+          class="hover:text-white hover:underline decoration-1 underline-offset-4 transition-colors"
+          >X_PLATFORM</a
+        >
+      </nav>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div
+    class="grid grid-cols-12 border-t border-grid-line pt-8 font-mono text-[10px] uppercase opacity-40 tracking-wider"
+  >
+    <div class="col-span-6 md:col-span-4 max-w-xs">
+      © {{ currentYear }} Manan Kher.<br />
+      All systems nominal.
     </div>
 
+    <div class="col-span-6 md:col-span-8 flex justify-end gap-8">
+      <button
+        (click)="scrollToTop()"
+        class="hover:text-white transition-colors flex items-center gap-2 group"
+      >
+        [ RETURN_TO_TOP ]
+        <span class="group-hover:-translate-y-1 transition-transform">↑</span>
+      </button>
+    </div>
+  </div>
 </footer>

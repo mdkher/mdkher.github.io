@@ -1,24 +1,49 @@
 <!-- Floating Capsule Container -->
-<div #menuContainer
-    class="fixed bottom-8 left-1/2 -translate-x-1/2 h-[60px] bg-ink-light/80 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-between px-2 overflow-hidden shadow-2xl z-50 transition-all w-[60px]">
+<div
+  #menuContainer
+  class="fixed bottom-8 left-1/2 -translate-x-1/2 h-[60px] bg-ink-light/80 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-between px-2 overflow-hidden shadow-2xl z-50 transition-all w-[60px]"
+>
+  <!-- Menu Toggle Button -->
+  <button
+    (click)="toggle()"
+    class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center shrink-0 z-20 hover:scale-105 transition-transform"
+  >
+    <div class="relative w-4 h-4 flex flex-col justify-center gap-1">
+      <span
+        class="w-full h-0.5 bg-black transition-transform"
+        [class.rotate-45]="isOpen()"
+        [class.translate-y-[3px]]="isOpen()"
+      ></span>
+      <span
+        class="w-full h-0.5 bg-black transition-transform"
+        [class.-rotate-45]="isOpen()"
+        [class.-translate-y-[3px]]="isOpen()"
+      ></span>
+    </div>
+  </button>
 
-    <!-- Menu Toggle Button -->
-    <button (click)="toggle()"
-        class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center shrink-0 z-20 hover:scale-105 transition-transform">
-        <div class="relative w-4 h-4 flex flex-col justify-center gap-1">
-            <span class="w-full h-0.5 bg-black transition-transform" [class.rotate-45]="isOpen()"
-                [class.translate-y-[3px]]="isOpen()"></span>
-            <span class="w-full h-0.5 bg-black transition-transform" [class.-rotate-45]="isOpen()"
-                [class.-translate-y-[3px]]="isOpen()"></span>
-        </div>
-    </button>
-
-    <!-- Navigation Links -->
-    <nav #navLinks
-        class="hidden opacity-0 gap-6 px-6 font-mono text-xs uppercase tracking-widest text-white/70 whitespace-nowrap">
-        <a routerLink="/" routerLinkActive="text-white" class="hover:text-white transition-colors">Home</a>
-        <a routerLink="/about" routerLinkActive="text-white" class="hover:text-white transition-colors">Profile</a>
-        <a routerLink="/projects" routerLinkActive="text-white" class="hover:text-white transition-colors">Work</a>
-    </nav>
-
+  <!-- Navigation Links -->
+  <nav
+    #navLinks
+    class="hidden opacity-0 gap-6 px-6 font-mono text-xs uppercase tracking-widest text-white/70 whitespace-nowrap"
+  >
+    <a
+      routerLink="/"
+      routerLinkActive="text-white"
+      class="hover:text-white transition-colors"
+      >Home</a
+    >
+    <a
+      routerLink="/about"
+      routerLinkActive="text-white"
+      class="hover:text-white transition-colors"
+      >About</a
+    >
+    <a
+      routerLink="/projects"
+      routerLinkActive="text-white"
+      class="hover:text-white transition-colors"
+      >Work</a
+    >
+  </nav>
 </div>

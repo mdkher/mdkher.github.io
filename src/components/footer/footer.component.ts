@@ -1,15 +1,23 @@
-import { Component, ChangeDetectionStrategy, signal, OnInit, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  signal,
+  OnInit,
+  OnDestroy,
+  PLATFORM_ID,
+  inject,
+} from "@angular/core";
+import { CommonModule, isPlatformBrowser } from "@angular/common";
 
 @Component({
-  selector: 'app-footer',
+  selector: "app-footer",
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './footer.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: "./footer.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent implements OnInit, OnDestroy {
-  currentTime = signal<string>('');
+  currentTime = signal<string>("");
   currentYear = new Date().getFullYear();
   private timerId: any;
   private platformId = inject(PLATFORM_ID);
@@ -30,16 +38,16 @@ export class FooterComponent implements OnInit, OnDestroy {
   private updateTime() {
     const now = new Date();
     // Format: HH:mm:ss [TZ]
-    const timeString = now.toLocaleTimeString('en-US', {
+    const timeString = now.toLocaleTimeString("en-US", {
       hour12: false,
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
     });
     this.currentTime.set(`${timeString} BOM`);
   }
 
   scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }

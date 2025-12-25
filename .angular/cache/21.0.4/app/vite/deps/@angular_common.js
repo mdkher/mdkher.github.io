@@ -93,16 +93,12 @@ import {
   provideImgixLoader,
   provideNetlifyLoader,
   registerLocaleData,
-  setRootDomAdapter
+  setRootDomAdapter,
 } from "./chunk-H64QTQBU.js";
-import {
-  IMAGE_CONFIG
-} from "./chunk-YJCAQK7J.js";
-import {
-  DOCUMENT
-} from "./chunk-NAAZ6BAQ.js";
-import "./chunk-JRFR6BLO.js";
+import { IMAGE_CONFIG } from "./chunk-YJCAQK7J.js";
+import { DOCUMENT } from "./chunk-NAAZ6BAQ.js";
 import "./chunk-HWYXSU2G.js";
+import "./chunk-JRFR6BLO.js";
 import "./chunk-MARUHEWW.js";
 import "./chunk-GOMI4DH3.js";
 export {
@@ -203,5 +199,5 @@ export {
   getDOM as ɵgetDOM,
   normalizeQueryParams as ɵnormalizeQueryParams,
   parseCookieValue as ɵparseCookieValue,
-  setRootDomAdapter as ɵsetRootDomAdapter
+  setRootDomAdapter as ɵsetRootDomAdapter,
 };

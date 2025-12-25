@@ -1,143 +1,210 @@
 <div
-    class="bg-slate-50 dark:bg-[#080808] min-h-screen text-slate-900 dark:text-white pt-32 pb-32 transition-colors duration-500">
+  class="bg-slate-50 dark:bg-[#080808] min-h-screen text-slate-900 dark:text-white pt-32 pb-32 transition-colors duration-500"
+>
+  <!-- Hero Section -->
+  <div class="max-w-[1400px] mx-auto px-6 mb-32 md:mb-48">
+    <h1
+      class="text-[12vw] leading-[0.9] font-bold font-display tracking-tighter mb-12"
+    >
+      <span
+        class="block opacity-0 animate-slide-up"
+        style="animation-delay: 100ms; animation-fill-mode: forwards"
+        >MORE THAN</span
+      >
+      <span
+        class="block text-indigo-600 dark:text-indigo-500 opacity-0 animate-slide-up"
+        style="animation-delay: 300ms; animation-fill-mode: forwards"
+        >JUST PIXELS.</span
+      >
+    </h1>
 
-    <!-- Hero Section -->
-    <div class="max-w-[1400px] mx-auto px-6 mb-32 md:mb-48">
-        <h1 class="text-[12vw] leading-[0.9] font-bold font-display tracking-tighter mb-12">
-            <span class="block opacity-0 animate-slide-up"
-                style="animation-delay: 100ms; animation-fill-mode: forwards;">MORE THAN</span>
-            <span class="block text-indigo-600 dark:text-indigo-500 opacity-0 animate-slide-up"
-                style="animation-delay: 300ms; animation-fill-mode: forwards;">JUST PIXELS.</span>
-        </h1>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start opacity-0 animate-fade-in"
-            style="animation-delay: 600ms; animation-fill-mode: forwards;">
-            <div class="text-2xl md:text-3xl font-light leading-relaxed text-slate-700 dark:text-slate-300">
-                <p class="mb-8">
-                    {{ hero.bio }}
-                </p>
-                <p>
-                    I believe that great product design is the intersection of logic and emotion. It's not just about
-                    how it looks, but how it works, how it scales, and how it makes people feel.
-                </p>
-            </div>
-            <div class="flex flex-col gap-8">
-                <div class="p-8 bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-3xl">
-                    <span class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Location</span>
-                    <span class="text-xl font-medium">{{ hero.location }}</span>
-                </div>
-                <div class="p-8 bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-3xl">
-                    <span
-                        class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Experience</span>
-                    <span class="text-xl font-medium">{{ hero.experience }} in Product Design & Strategy</span>
-                </div>
-            </div>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start opacity-0 animate-fade-in"
+      style="animation-delay: 600ms; animation-fill-mode: forwards"
+    >
+      <div
+        class="text-2xl md:text-3xl font-light leading-relaxed text-slate-700 dark:text-slate-300"
+      >
+        <p class="mb-8">
+          {{ hero.bio }}
+        </p>
+        <p>
+          I believe that great product design is the intersection of logic and
+          emotion. It's not just about how it looks, but how it works, how it
+          scales, and how it makes people feel.
+        </p>
+      </div>
+      <div class="flex flex-col gap-8">
+        <div
+          class="p-8 bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-3xl"
+        >
+          <span
+            class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
+            >Location</span
+          >
+          <span class="text-xl font-medium">{{ hero.location }}</span>
         </div>
+        <div
+          class="p-8 bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 rounded-3xl"
+        >
+          <span
+            class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2"
+            >Experience</span
+          >
+          <span class="text-xl font-medium"
+            >{{ hero.experience }} in Product Design & Strategy</span
+          >
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Clients / Trusted By -->
-    <div class="border-y border-slate-200 dark:border-white/5 py-16 mb-32 overflow-hidden bg-white dark:bg-[#0a0a0a]">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-12 text-center md:text-left">
-                Trusted to build products for</h3>
+  <!-- Clients / Trusted By -->
+  <div
+    class="border-y border-slate-200 dark:border-white/5 py-16 mb-32 overflow-hidden bg-white dark:bg-[#0a0a0a]"
+  >
+    <div class="max-w-[1400px] mx-auto px-6">
+      <h3
+        class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-12 text-center md:text-left"
+      >
+        Trusted to build products for
+      </h3>
+      <div
+        class="flex flex-wrap justify-center md:justify-between items-center gap-12 md:gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500"
+      >
+        @for (client of clients; track client) {
+          <span
+            class="text-3xl md:text-5xl font-bold font-display text-slate-300 dark:text-white/20 hover:text-indigo-600 dark:hover:text-white transition-colors cursor-default"
+          >
+            {{ client }}
+          </span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience Timeline -->
+  <div class="max-w-[1400px] mx-auto px-6 mb-32">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <div class="lg:col-span-4">
+        <h2 class="text-4xl md:text-6xl font-bold font-display sticky top-32">
+          The Journey
+        </h2>
+      </div>
+      <div class="lg:col-span-8 space-y-24">
+        @for (job of experience; track job.id) {
+          <div
+            class="relative pl-8 md:pl-16 border-l border-slate-200 dark:border-white/10 group"
+          >
+            <!-- Dot -->
             <div
-                class="flex flex-wrap justify-center md:justify-between items-center gap-12 md:gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                @for(client of clients; track client) {
-                <span
-                    class="text-3xl md:text-5xl font-bold font-display text-slate-300 dark:text-white/20 hover:text-indigo-600 dark:hover:text-white transition-colors cursor-default">
-                    {{ client }}
-                </span>
-                }
+              class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-white/30 group-hover:bg-indigo-500 transition-colors"
+            ></div>
+
+            <div class="mb-4">
+              <span
+                class="text-sm font-mono text-indigo-600 dark:text-indigo-400 mb-2 block"
+                >{{ job.period }}</span
+              >
+              <h3
+                class="text-3xl font-bold text-slate-900 dark:text-white mb-1"
+              >
+                {{ job.role }}
+              </h3>
+              <div class="text-xl text-slate-500 dark:text-slate-400">
+                {{ job.company }} <span class="mx-2 opacity-50">•</span>
+                {{ job.location }}
+              </div>
             </div>
+
+            <ul
+              class="space-y-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl"
+            >
+              @for (highlight of job.highlights; track highlight) {
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-500/50 shrink-0"
+                  ></span>
+                  {{ highlight }}
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Recognition / Awards Grid -->
+  <div class="max-w-[1400px] mx-auto px-6 mb-32">
+    <h2 class="text-4xl md:text-6xl font-bold font-display mb-16">
+      Recognition
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      @for (award of awards; track award.title) {
+        <div
+          class="p-8 bg-white dark:bg-[#111] rounded-3xl border border-slate-200 dark:border-white/5 hover:border-indigo-500/50 transition-colors group"
+        >
+          <div
+            class="text-indigo-600 dark:text-indigo-400 font-mono text-sm mb-4"
+          >
+            {{ award.date }}
+          </div>
+          <h3
+            class="text-xl font-bold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+          >
+            {{ award.title }}
+          </h3>
+          <p class="text-sm text-slate-500">{{ award.desc }}</p>
         </div>
+      }
     </div>
+  </div>
 
-    <!-- Experience Timeline -->
-    <div class="max-w-[1400px] mx-auto px-6 mb-32">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div class="lg:col-span-4">
-                <h2 class="text-4xl md:text-6xl font-bold font-display sticky top-32">The Journey</h2>
-            </div>
-            <div class="lg:col-span-8 space-y-24">
-                @for(job of experience; track job.id) {
-                <div class="relative pl-8 md:pl-16 border-l border-slate-200 dark:border-white/10 group">
-                    <!-- Dot -->
-                    <div
-                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-white/30 group-hover:bg-indigo-500 transition-colors">
-                    </div>
-
-                    <div class="mb-4">
-                        <span class="text-sm font-mono text-indigo-600 dark:text-indigo-400 mb-2 block">{{ job.period
-                            }}</span>
-                        <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-1">{{ job.role }}</h3>
-                        <div class="text-xl text-slate-500 dark:text-slate-400">{{ job.company }} <span
-                                class="mx-2 opacity-50">•</span> {{ job.location }}</div>
-                    </div>
-
-                    <ul class="space-y-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-                        @for(highlight of job.highlights; track highlight) {
-                        <li class="flex items-start gap-3">
-                            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-500/50 shrink-0"></span>
-                            {{ highlight }}
-                        </li>
-                        }
-                    </ul>
-                </div>
-                }
-            </div>
-        </div>
+  <!-- Education & Certs -->
+  <div class="max-w-[1400px] mx-auto px-6 mb-32">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h3
+          class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-8"
+        >
+          Education
+        </h3>
+        @for (edu of education; track edu.degree) {
+          <div class="mb-8">
+            <h4 class="text-xl font-bold">{{ edu.school }}</h4>
+            <p class="text-slate-600 dark:text-slate-400">{{ edu.degree }}</p>
+            <p class="text-sm text-slate-400 mt-1">{{ edu.year }}</p>
+          </div>
+        }
+      </div>
+      <div>
+        <h3
+          class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-8"
+        >
+          Certifications
+        </h3>
+        @for (cert of certs; track cert.title) {
+          <div class="mb-8">
+            <h4 class="text-xl font-bold">{{ cert.title }}</h4>
+            <p class="text-slate-600 dark:text-slate-400">{{ cert.issuer }}</p>
+            <p class="text-sm text-slate-400 mt-1">{{ cert.year }}</p>
+          </div>
+        }
+      </div>
     </div>
+  </div>
 
-    <!-- Recognition / Awards Grid -->
-    <div class="max-w-[1400px] mx-auto px-6 mb-32">
-        <h2 class="text-4xl md:text-6xl font-bold font-display mb-16">Recognition</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            @for(award of awards; track award.title) {
-            <div
-                class="p-8 bg-white dark:bg-[#111] rounded-3xl border border-slate-200 dark:border-white/5 hover:border-indigo-500/50 transition-colors group">
-                <div class="text-indigo-600 dark:text-indigo-400 font-mono text-sm mb-4">{{ award.date }}</div>
-                <h3
-                    class="text-xl font-bold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {{ award.title }}</h3>
-                <p class="text-sm text-slate-500">{{ award.desc }}</p>
-            </div>
-            }
-        </div>
-    </div>
-
-    <!-- Education & Certs -->
-    <div class="max-w-[1400px] mx-auto px-6 mb-32">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-                <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-8">Education</h3>
-                @for(edu of education; track edu.degree) {
-                <div class="mb-8">
-                    <h4 class="text-xl font-bold">{{ edu.school }}</h4>
-                    <p class="text-slate-600 dark:text-slate-400">{{ edu.degree }}</p>
-                    <p class="text-sm text-slate-400 mt-1">{{ edu.year }}</p>
-                </div>
-                }
-            </div>
-            <div>
-                <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-8">Certifications</h3>
-                @for(cert of certs; track cert.title) {
-                <div class="mb-8">
-                    <h4 class="text-xl font-bold">{{ cert.title }}</h4>
-                    <p class="text-slate-600 dark:text-slate-400">{{ cert.issuer }}</p>
-                    <p class="text-sm text-slate-400 mt-1">{{ cert.year }}</p>
-                </div>
-                }
-            </div>
-        </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-5xl md:text-7xl font-bold font-display mb-8">Ready to start?</h2>
-        <a href="mailto:mdkher@gmail.com"
-            class="inline-block px-12 py-5 bg-indigo-600 text-white rounded-full text-xl font-bold hover:bg-indigo-700 hover:scale-105 transition-all">
-            Get in Touch
-        </a>
-    </div>
-
+  <!-- CTA -->
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-5xl md:text-7xl font-bold font-display mb-8">
+      Ready to start?
+    </h2>
+    <a
+      href="mailto:mdkher@gmail.com"
+      class="inline-block px-12 py-5 bg-indigo-600 text-white rounded-full text-xl font-bold hover:bg-indigo-700 hover:scale-105 transition-all"
+    >
+      Get in Touch
+    </a>
+  </div>
 </div>

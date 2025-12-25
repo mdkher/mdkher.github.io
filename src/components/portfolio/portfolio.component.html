@@ -15,7 +15,7 @@
   <!-- Rows -->
   @for (project of projects(); track project.id; let i = $index) {
     <a
-      [routerLink]="['/case-study', project.id]"
+      [appLink]="['/case-study', project.id]" appPageTransition
       (mouseenter)="onProjectHover(project.image)"
       (mouseleave)="onProjectLeave()"
       class="col-span-12 flex flex-col md:grid md:grid-cols-12 border-b border-grid-line py-8 md:py-8 gap-4 md:gap-0 hover:bg-white/5 transition-colors group cursor-pointer md:cursor-none md:items-center"

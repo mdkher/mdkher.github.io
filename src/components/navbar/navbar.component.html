@@ -27,22 +27,22 @@
     #navLinks
     class="hidden opacity-0 gap-6 px-6 font-mono text-xs uppercase tracking-widest text-white/70 whitespace-nowrap"
   >
+    >
     <a
-      routerLink="/"
-      routerLinkActive="text-white"
-      class="hover:text-white transition-colors"
+      [appLink]="['/']"
+      class="hover:text-white transition-colors cursor-pointer"
+      [class.text-white]="router.url === '/'"
       >Home</a
     >
     <a
-      routerLink="/about"
-      routerLinkActive="text-white"
-      class="hover:text-white transition-colors"
+      [appLink]="['/about']"
+      class="hover:text-white transition-colors cursor-pointer"
+      [class.text-white]="router.url === '/about'"
       >About</a
     >
     <a
-      routerLink="/projects"
-      routerLinkActive="text-white"
-      class="hover:text-white transition-colors"
+      href="#work"
+      class="hover:text-white transition-colors cursor-pointer"
       >Work</a
     >
   </nav>

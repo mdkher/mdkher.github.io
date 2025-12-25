@@ -6,6 +6,8 @@ import {
   PLATFORM_ID,
   ElementRef,
   ViewChild,
+  ViewChildren,
+  QueryList,
 } from "@angular/core";
 import { CommonModule, isPlatformBrowser } from "@angular/common";
 import {
@@ -17,6 +19,7 @@ import {
 import { GsapService } from "./services/gsap.service";
 import { CursorService } from "./services/cursor.service";
 import { CustomCursorComponent } from "./components/ui/custom-cursor/custom-cursor.component";
+import { PageTransitionService } from "./services/page-transition.service";
 import { FooterComponent } from "./components/footer/footer.component";
 import "lenis/dist/lenis.css";
 import Lenis from "lenis";
@@ -33,19 +36,26 @@ export class AppComponent implements AfterViewInit {
   private platformId = inject(PLATFORM_ID);
   private gsapService = inject(GsapService); // Ensure GSAP is initialized
 
-  @ViewChild("curtain") curtain!: ElementRef;
+  // Header Elements
+  // Header Elements
+  @ViewChild('wipeLayer') wipeLayer!: ElementRef;
+  @ViewChild('loaderText') loaderText!: ElementRef;
+  
   private router = inject(Router);
-  private cursorService = inject(CursorService); // Inject CursorService
+  private cursorService = inject(CursorService);
+  private transitionService = inject(PageTransitionService); // Inject new service
 
-  lenis!: Lenis; // Store reference
+  lenis!: Lenis; 
 
   constructor() {
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.cursorService.clearPreview(); // Reset cursor state
-        this.startTransition();
-      } else if (event instanceof NavigationEnd) {
-        this.endTransition();
+      // NOTE: NavigationStart is now handled by the Directive + Service (Curtain Up)
+      
+      if (event instanceof NavigationEnd) {
+        this.cursorService.clearPreview();
+        // Reveal (Curtain Down)
+        this.transitionService.reveal();
+        
         // Force scroll to top
         if (this.lenis) {
           this.lenis.scrollTo(0, { immediate: true });
@@ -54,28 +64,15 @@ export class AppComponent implements AfterViewInit {
     });
   }
 
-  // ... (Transition methods remain same) -> restoring real code
-  private startTransition() {
-    if (!this.curtain) return;
-    gsap.set(this.curtain.nativeElement, { y: "100%" });
-    gsap.to(this.curtain.nativeElement, {
-      y: "0%",
-      duration: 0.6,
-      ease: "power3.inOut",
-    });
-  }
-
-  private endTransition() {
-    if (!this.curtain) return;
-    gsap.to(this.curtain.nativeElement, {
-      y: "-100%",
-      duration: 0.6,
-      delay: 0.2,
-      ease: "power3.inOut",
-    });
-  }
-
   ngAfterViewInit(): void {
+    // Register elements with the service
+    if(this.wipeLayer) {
+        this.transitionService.setElements({
+            wipeLayer: this.wipeLayer,
+            loaderText: this.loaderText
+        });
+    }
+
     if (isPlatformBrowser(this.platformId)) {
       this.initLenis();
     }

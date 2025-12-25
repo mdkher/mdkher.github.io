@@ -1,13 +1,14 @@
-import { Component, ChangeDetectionStrategy, inject } from "@angular/core";
+import { Component, ChangeDetectionStrategy, signal, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterLink } from "@angular/router";
+
 import { PortfolioService } from "../../services/portfolio.service";
 import { CursorService } from "../../services/cursor.service";
+import { PageTransitionDirective } from '../../directives/page-transition.directive';
 
 @Component({
   selector: "app-portfolio",
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, PageTransitionDirective],
   templateUrl: "./portfolio.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

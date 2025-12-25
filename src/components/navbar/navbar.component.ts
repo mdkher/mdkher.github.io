@@ -8,17 +8,20 @@ import {
   effect,
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { Router } from "@angular/router";
 import gsap from "gsap";
+import { ThemeService } from '../../services/theme.service';
+import { PageTransitionDirective } from '../../directives/page-transition.directive';
 
 @Component({
   selector: "app-navbar",
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, PageTransitionDirective],
   templateUrl: "./navbar.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {
+  router = inject(Router);
   isOpen = signal(false);
 
   @ViewChild("menuContainer") menuContainer!: ElementRef;

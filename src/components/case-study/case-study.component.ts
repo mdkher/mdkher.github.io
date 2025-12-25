@@ -10,7 +10,7 @@ import {
   effect,
 } from "@angular/core";
 import { CommonModule, NgOptimizedImage } from "@angular/common";
-import { ActivatedRoute, RouterLink } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { PortfolioService } from "../../services/portfolio.service";
 import { Project } from "../../models/portfolio.models";
 import { ThemeService } from "../../services/theme.service";
@@ -20,11 +20,12 @@ import { fromEvent, Subscription } from "rxjs";
 import * as d3 from "d3";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { PageTransitionDirective } from '../../directives/page-transition.directive';
 
 @Component({
   selector: "app-case-study",
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, RouterLink],
+  imports: [CommonModule, PageTransitionDirective, NgOptimizedImage],
   templateUrl: "./case-study.component.html",
   styleUrls: ["./case-study.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush,

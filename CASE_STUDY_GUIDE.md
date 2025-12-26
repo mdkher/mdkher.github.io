@@ -1,217 +1,171 @@
-# How to Use the Case Study Template
+# How to Use the Senior Case Study Template (2024 Update)
 
-This guide provides an overview of how to add content to your portfolio case studies, including the newly added features for images in Overview and Research sections.
+This guide provides an overview of how to add content to your portfolio case studies, now updated with fields that signal **Senior / Lead Product Management & Design** capabilities (Strategy, Decision Making, and Reflection).
 
 All case study content is managed in: `src/data/portfolio-data.ts`.
 
-## 1. Adding a New Project
+## 1. The Strategy Layer (New & Critical)
 
-To add a new case study, add a new object to the `PROJECTS_DATA` array in `portfolio-data.ts`.
+To stand out as a Senior PM/Designer, you must articulate the "Why" before the "What".
+
+### A. Problem vs. Hypothesis
+
+Instead of just a problem assertion, include your hypothesis.
 
 ```typescript
-export const PROJECTS_DATA: Project[] = [
-  {
-    id: "my-project-id", // URL slug
-    title: "Project Title",
-    // ... basic details
-  },
-  // ... other projects
-];
+problemStatement: "Users were dropping off because the navigation was too complex.",
+projectHypothesis: "We believe that by flattening the IA, we will see a 15% increase in task completion.",
 ```
 
-## 2. Adding Images with Text (New Feature)
+### B. Goals: Business vs. User
 
-You can now add large "Hero Style" images with accompanying titles and descriptions in three sections: **Overview**, **Research**, and **Design**.
+Explicitly differentiating these shows strategic alignment.
+
+```typescript
+businessGoals: [
+  "Increase conversion rate by 5%",
+  "Reduce support ticket volume by 20%"
+],
+userGoals: [
+  "Complete checkout in under 2 minutes",
+  "Feel confident about security during payment"
+],
+```
+
+## 2. The Decision Layer (New & Critical)
+
+This constitutes the core of a Senior interview. Use `designRationale` to explain your tradeoffs.
+
+```typescript
+designRationale: [
+  {
+    topic: "Navigation Structure",
+    options: "Evaluated a Hamburger Menu vs. Bottom Bar.",
+    decision: "Chose Bottom Bar because 80% of our users are on mobile and need quick access to 'Search'.",
+    image: "assets/images/nav-exploration.jpg" // Optional evidence
+  },
+  {
+    topic: "Color Palette",
+    options: "Dark Mode vs. Light Mode default.",
+    decision: "Defaulted to Dark Mode to align with our pro-user persona who use the app in low-light studios."
+  }
+],
+```
+
+## 3. The Reflection Layer (New & Critical)
+
+Show growth and resilience.
+
+```typescript
+challenges: [
+  "Technical constraints on the legacy backend prevented real-time search.",
+  "Stakeholder pushback on removing the 'Promotions' banner."
+],
+learnings: [
+  "Early user testing saved us 3 weeks of dev time.",
+  "Next time, I would involve engineering earlier in the ideation phase."
+],
+```
+
+## 4. Enhanced Visuals (Overview, Research, Design)
+
+You can still add large "Hero Style" images with accompanying titles and descriptions in three sections.
 
 ### Structure
-
-Each image block follows this structure:
 
 ```typescript
 {
   title: "Image Title",
   desc: "A brief description explaining the image.",
-  image: "https://link-to-your-image.com/image.jpg"
+  image: "assets/images/research-workshop.jpg"
 }
 ```
 
 ### Where to Add Them
 
-#### A. Overview Section
+- **Overview**: `overviewImages` (Before/After legacy comparisons)
+- **Research**: `researchImages` (Journey maps, affinity diagrams)
+- **Design**: `keyFeatures` (Final UI)
 
-Add the `overviewImages` array to your project object. These will appear after the "Context" text.
+## 5. Complete Reference Example
 
-```typescript
-overviewImages: [
-  {
-    title: "The Original Interface",
-    desc: "A screenshot of the legacy system showing the clutter.",
-    image: "assets/images/legacy-ui.png"
-  }
-],
-```
-
-#### B. Research Section
-
-Add the `researchImages` array. These will appear after your research text and graphs.
-
-```typescript
-researchImages: [
-  {
-    title: "Affinity Mapping",
-    desc: "Grouping user insights during our workshop.",
-    image: "assets/images/research-workshop.jpg"
-  }
-],
-```
-
-#### C. Design Section (Key Features)
-
-This existing feature uses the `keyFeatures` array.
-
-```typescript
-keyFeatures: [
-  {
-    title: "Final UI",
-    desc: " The polished interface design.",
-    image: "assets/images/final-ui.jpg"
-  }
-],
-```
-
-## 3. Other Content Sections
-
-### Question: How do I show data?
-
-**Use `researchGraph`**. It renders a bar chart.
-
-```typescript
-researchGraph: [
-  { label: "Efficiency", value: 30 },
-  { label: "Errors", value: 10 }
-],
-```
-
-### Question: How do I show Before/After metrics?
-
-**Use `businessImpact`**. It renders a comparison card.
-
-```typescript
-businessImpact: [
-  { label: "Conversion", before: "2%", after: "5%" }
-],
-```
-
-### Question: How do I show my colors?
-
-**Use `designSystem`**.
-
-```typescript
-designSystem: {
-  colors: [
-    { hex: "#FF0000", name: "Brand Red" }
-  ],
-  typography: [
-    { name: "Inter", usage: "Body" }
-  ]
-}
-```
-
-## 4. Complete Reference Example
-
-Here is a complete example of a project object with all fields populated.
+Here is a complete example of a **Senior-Level** project object.
 
 ```typescript
 {
-  id: "comprehensive-example",
-  title: "Super App Redesign",
-  category: "Mobile App",
+  id: "senior-project-example",
+  title: "Enterprise Dashboard Redesign",
+  category: "B2B SaaS",
   image: "assets/hero.jpg",
-  description: "A complete overhaul of the Super App ecosystem.",
-  tags: ["UX", "UI", "Mobile"],
+  description: "Scaling a complex data tool for enterprise users.",
+  tags: ["Strategy", "UX", "React"],
 
   // Overview Details
-  client: "Tech Corp",
-  role: "Lead Designer",
-  team: ["2 Designers", "4 Devs"],
+  client: "Big Data Corp",
+  role: "Lead Product Designer",
+  team: ["2 PMs", "4 Devs"],
   year: "2024",
-  timeline: "4 Months",
-  tools: ["Figma", "React"],
+  timeline: "6 Months",
+  tools: ["Figma", "Jira"],
 
-  // 1. The Challenge
-  problemStatement: "Users were dropping off because the navigation was too complex.",
+  // 1. The Strategy
+  problemStatement: "Users could not find critical insights in the cluttered dashboard.",
+  projectHypothesis: "By introducing customizable widgets, we will increase daily active usage.",
+  businessGoals: ["Reduce churn by 10%", "Increase upsells"],
+  userGoals: ["View daily reports in <30 seconds"],
+
   contextText: [
-    "We noticed a 40% drop-off rate.",
-    "The legacy app was built on outdated tech."
-  ],
-  // [NEW] Overview Images
-  overviewImages: [
-    {
-      title: "Legacy Audit",
-      desc: "The old screen showing 12 different menu options.",
-      image: "assets/old-screen.jpg"
-    }
+    "The legacy system was 10 years old.",
+    "Our main competitor had just launched a modern alternative."
   ],
 
   // 2. The Process
   process: [
-    { title: "Research", description: "User interviews and data analysis." },
-    { title: "Design", description: "Wireframing and prototyping." }
+    { title: "Discovery", description: "Stakeholder interviews and data audit." },
+    { title: "Definition", description: "Creating the new information architecture." }
   ],
 
-  // 3. Discovery (Research)
+  // 3. Research & Data
   researchFindings: [
-    { icon: "📉", title: "Drop-off", desc: "40% drop at checkout." }
+    { icon: "📉", title: "Time on Task", desc: "40% slower than industry benchmark." }
   ],
-  researchText: [
-    "Users found the checkout process confusing."
-  ],
-  researchGraph: [
-    { label: "Confusion", value: 80 },
-    { label: "Clarity", value: 20 }
-  ],
-  // [NEW] Research Images
-  researchImages: [
+  researchText: ["Users felt overwhelmed by data density."],
+
+  // 4. Design & Decisions
+  designRationale: [
     {
-      title: "User Journey Map",
-      desc: "Mapping the pain points across the purchase flow.",
-      image: "assets/journey-map.jpg"
+      topic: "Dashboard Layout",
+      options: "Fixed Grid vs. Drag-and-Drop.",
+      decision: "Went with Fixed Grid for v1 to reduce engineering complexity, while solving 80% of use cases."
     }
   ],
 
-  // 4. Design & Solution
-  solution: "We simplified the checkout to 3 steps.",
-  solutionText: [
-    "The new design focuses on clarity and speed."
-  ],
+  solution: "A modular dashboard system.",
   designSystem: {
     colors: [{ hex: "#000", name: "Black" }],
-    typography: [{ name: "Roboto", usage: "Main" }]
+    typography: [{ name: "Inter", usage: "Main" }]
   },
   keyFeatures: [
     {
-      title: "One-Click Pay",
-      desc: "Users can now pay instantly.",
-      image: "assets/pay-screen.jpg"
+      title: "Widget Library",
+      desc: "Users can now pin their favorite charts.",
+      image: "assets/final-ui.jpg"
     }
   ],
 
-  // 5. Impact
+  // 5. Reflection & Impact
+  challenges: ["Migrating 2TB of legacy data without downtime."],
+  learnings: ["Data visualization requires extreme attention to edge cases."],
+
   stats: [
-    { value: "50%", label: "Faster", description: "Checkout speed" }
+    { value: "50%", label: "Faster", description: "Report generation" }
   ],
   businessImpact: [
-    { label: "Revenue", before: "$1M", after: "$2M" }
-  ],
-  impactGraph: [
-    { label: "Q1", value: 20 },
-    { label: "Q2", value: 80 }
+    { label: "NPS", before: "20", after: "45" }
   ],
   conclusion: {
-    title: "Wrap Up",
-    content: ["It was a great success."]
-  },
-
-  nextProjectId: "next-project-id"
+    title: "Final Thoughts",
+    content: ["A successful turnaround for the product."]
+  }
 }
 ```

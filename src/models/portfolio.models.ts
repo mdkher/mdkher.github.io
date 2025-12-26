@@ -43,8 +43,13 @@ export interface Project {
 
   // Deep Dive Article Content
   problemStatement: string;
+  projectHypothesis?: string; // [New] "We believe that by doing X..."
   contextText: string[];
   overviewImages?: { title: string; desc: string; image: string }[];
+
+  // Strategy & Goals [New Section]
+  businessGoals?: string[];
+  userGoals?: string[];
 
   // Research
   researchFindings?: { icon: string; title: string; desc: string }[];
@@ -54,12 +59,23 @@ export interface Project {
 
   process: ProcessStep[];
 
-  // Design
+  // Design & Decisions
   designSystem?: DesignSystem;
+  designRationale?: {       // [New] Critical for Senior roles
+    topic: string;
+    options: string;
+    decision: string;
+    image?: string;
+  }[];
+  
   solution: string;
   solutionText?: string[];
   governanceModel?: { title: string; description: string; imageUrl: string };
   keyFeatures: { title: string; desc: string; image: string }[];
+  
+  // Reflection [New Section]
+  challenges?: string[];
+  learnings?: string[];
 
   // Impact
   stats: StatMetric[];
